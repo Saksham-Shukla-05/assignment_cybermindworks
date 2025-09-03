@@ -11,7 +11,7 @@ export const jobSchema = z.object({
   }),
   description: z.string().min(10, "Description must be at least 10 characters"),
 
-  /* These fields were only mentioned on the models and not on frontend and so if they are needed in the near future on the frontend we can simply uncomment this */
+  /* These fields were only mentioned in the model and not on frontend, and so if they are needed in the near future on the frontend we can simply uncomment this */
 
   // requirements: z.array(z.string()).nonempty("At least one requirement needed"),
   // responsibilities: z
