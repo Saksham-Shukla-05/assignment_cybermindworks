@@ -19,7 +19,7 @@ const JobSearchFilter = () => {
 
   const fetchJobs = async () => {
     try {
-      const res = await api.get(`${import.meta.env.VITE_API_URI}/jobs`);
+      const res = await api.get(`${import.meta.env.VITE_API_URI}/`);
       console.log(res.data);
 
       setJobs(res.data);
