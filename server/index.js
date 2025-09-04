@@ -19,7 +19,7 @@ app.use(
 app.use(express.json());
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  res.status(500).json({ message: "Something broke!" });
+  res.status(500).json({ message: "Something went wrong!" });
 });
 app.get("/", (req, res) => {
   res.send("✅ Server is up and running!");
