@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
 import JobCard from "./JobCard";
-
+import api from "../utils/axiosInstance";
 const JobSearchFilter = () => {
   const { register, handleSubmit, control, setValue, watch } = useForm({
     defaultValues: {
@@ -12,6 +12,27 @@ const JobSearchFilter = () => {
       maxSalary: 100,
     },
   });
+
+  const [jobs, setJobs] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const fetchJobs = async () => {
+    try {
+      const res = await api.get(`${import.meta.env.VITE_API_URI}/jobs`);
+      console.log(res.data);
+
+      setJobs(res.data);
+      setLoading(true);
+    } catch (error) {
+      setError(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+  useEffect(() => {
+    fetchJobs();
+  }, []);
 
   const minSliderRef = useRef(null);
   const maxSliderRef = useRef(null);
