@@ -226,7 +226,7 @@ const CreateJobModal = ({ isOpen, onClose }) => {
           </div>
 
           {/* Actions */}
-          <div className="flex justify-between items-center mt-4">
+          <div className="flex   justify-between items-center mt-4">
             <button
               type="button"
               onClick={() => {
@@ -235,7 +235,10 @@ const CreateJobModal = ({ isOpen, onClose }) => {
               }}
               className="border px-4 py-2 rounded-lg text-gray-600 hover:bg-gray-100"
             >
-              Cancel
+              <p className="flex items-center gap-2">
+                Save Draft
+                <img className="w-2 h-2 mt-1" src="/arrow_down.svg" alt="" />
+              </p>
             </button>
             <button
               type="submit"

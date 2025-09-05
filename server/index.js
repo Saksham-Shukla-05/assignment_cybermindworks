@@ -9,10 +9,21 @@ dotenv.config();
 connectDB();
 
 const app = express();
+const allowedOrigins = [
+  "https://assignment-cybermindworks.vercel.app",
+  "http://localhost:3000",
+];
 
 app.use(
   cors({
-    origin: "https://assignment-cybermindworks.vercel.app",
+    origin: function (origin, callback) {
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     methods: ["GET", "POST"],
   })
 );
