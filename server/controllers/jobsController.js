@@ -1,9 +1,10 @@
 import { jobSchema } from "../validator/jobValidator.js";
 import jobsModel from "../model/jobsModel.js";
-import { regex } from "zod";
 export const getJobs = async (req, res) => {
   try {
     const { title, location, jobType, minSalary, maxSalary } = req.query;
+
+    console.log("At the backend", req.query);
 
     const query = {};
 
@@ -33,6 +34,8 @@ export const getJobs = async (req, res) => {
 
 export const createJob = async (req, res) => {
   try {
+    console.log("Received Data:", req.body);
+
     const parsedData = jobSchema.parse(req.body);
 
     const newJob = await jobsModel.create(parsedData);
@@ -43,6 +46,7 @@ export const createJob = async (req, res) => {
     });
   } catch (error) {
     if (error.name === "ZodError") {
+      console.error("Validation errors:", error.errors);
       return res.status(400).json({
         message: "Validation failed",
         errors: error.errors,

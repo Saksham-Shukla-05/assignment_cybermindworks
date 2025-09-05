@@ -1,10 +1,13 @@
 import JobFilters from "./components/JobFilter";
 import Navbar from "./components/Navbar";
+import { JobModalProvider } from "./context/JobModalContext";
 function App() {
   return (
     <div>
-      <Navbar />
-      <JobFilters />
+      <JobModalProvider>
+        <Navbar />
+        <JobFilters />
+      </JobModalProvider>
     </div>
   );
 }

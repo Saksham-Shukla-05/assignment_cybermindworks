@@ -1,6 +1,8 @@
 import React from "react";
+import { useJobModal } from "../context/JobModalContext";
 
 const Navbar = () => {
+  const { openModal } = useJobModal();
   return (
     <nav className="flex items-center justify-center   ">
       <div className="mt-[21px] flex justify-center border-[1px] border-white rounded-[122px] p-[21px]  shadow-[0_0_20px_0_rgba(127,127,127,0.15)]">
@@ -17,8 +19,10 @@ const Navbar = () => {
               <p className="cursor-pointer">Testimonials</p>
             </div>
           </div>
-          <div className="border-1 py-2 px-6 rounded-[30px] bg-gradient-to-b from-[#A128FF] to-[#6100AD] text-white">
-            <button className="">Create Jobs</button>
+          <div className="border-1 py-2  px-6 rounded-[30px] bg-gradient-to-b from-[#A128FF] to-[#6100AD] text-white">
+            <button onClick={openModal} className="cursor-pointer">
+              Create Jobs
+            </button>
           </div>
         </div>
       </div>
