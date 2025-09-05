@@ -12,10 +12,11 @@ const app = express();
 
 app.use(
   cors({
-    origin: "https://assignment-cybermindworks.vercel.app/",
+    origin: "https://assignment-cybermindworks.vercel.app",
     methods: ["GET", "POST"],
   })
 );
+
 app.use(express.json());
 app.use((err, req, res, next) => {
   console.error(err.stack);
